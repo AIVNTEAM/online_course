@@ -42,6 +42,8 @@ class OwnerEditMixin(object):
 		#automatically set the current user in the 
 		#owner attribute of the object being saved
 		form.instance.owner = self.request.user.teacher
+		#thiet lap approved mac dinh la admin
+		form.instance.approved = User.objects.get(pk=1)
 		return super(OwnerEditMixin, self).form_valid(form)
 
 class OwnerCourseMixin(OwnerMixin):

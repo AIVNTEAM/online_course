@@ -43,7 +43,12 @@ class Course(models.Model):
 	title = models.CharField(max_length=200)
 	slug = models.SlugField(max_length=200, unique=True)
 	overview = models.TextField()
+	price = models.IntegerField(default=0)
+	discount = models.IntegerField(default=0)
+	approved = models.ForeignKey(User, related_name='courses_approved', null=True, default='-1')
 	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	is_active = models.BooleanField(default=0)
 
 	class Meta:
 		ordering = ('-created',)
@@ -127,7 +132,16 @@ class Booking(models.Model):
 		on_delete=models.CASCADE, related_name='booking_courses')
 	user = models.ForeignKey(User, related_name='manages') #user quan ly booking
 	message = models.CharField(max_length=250)
-	status = models.BooleanField(default=0)
+	is_active = models.BooleanField(default=0)
 	payment_status = models.BooleanField(default=0)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+
+class QuestionAnswer(models.Model):
+	content = models.TextField()
+	lesson = models.ForeignKey(Module, related_name='questions')
+	student = models.ForeignKey(Student, related_name='questions_asked', null=True, default='-1')
+	teacher = models.ForeignKey(Teacher, related_name='questions_answerd', null=True, default='-1')
+	status = models.BooleanField(default=0)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
