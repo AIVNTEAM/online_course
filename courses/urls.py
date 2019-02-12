@@ -1,5 +1,7 @@
 from django.conf.urls import url
+from django.contrib.auth import views as auth_views
 from . import views
+# from accounts import views as accounts_views
 
 urlpatterns = [
 	# url(r'^home$', views.HomeView.as_view(), name='home'),
@@ -47,4 +49,6 @@ urlpatterns = [
 	url(r'^(?P<slug>[\w-]+)/$',
 		views.CourseDetailView.as_view(),
 		name='course_detail'),
+
+	
 ]

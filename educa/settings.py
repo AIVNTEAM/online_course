@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'courses',
     'embed_video',
     'crispy_forms',
+    'bootstrap_admin', # always before django.contrib.admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,3 +150,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 #khi su dung ke thua AbtractUser can thiet lap thuoc tinh nay
 AUTH_USER_MODEL = "courses.User"
+
+#su dung de goi mail trong console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

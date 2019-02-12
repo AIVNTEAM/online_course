@@ -21,6 +21,11 @@ class CourseAdmin(admin.ModelAdmin):
 	inlines = [ModuleInline]
 	list_editable = ['is_active', ]
 	ordering = ['is_active', 'created']
+	
+	#ham nay nham cap nhat model khi save
+	def save_model(self, request, obj, form, change):
+		obj.approved = request.user
+		super().save_model(request, obj, form, change)
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
@@ -32,4 +37,5 @@ class BookingAdmin(admin.ModelAdmin):
 	search_fields = ['student', ]
 	list_editable = ['is_active', 'message', 'payment_status']
 	ordering = ['is_active', 'created']
+	
 

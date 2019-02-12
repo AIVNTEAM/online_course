@@ -14,6 +14,8 @@ from .models import User, Subject, Teacher
 from students.forms import CourseEnrollForm
 from django.views.generic import TemplateView
 from django.contrib.auth import login, authenticate
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 # Sau khi dang nhap - dua vao role de chuyen huong
 def home(request):	
@@ -293,3 +295,14 @@ class TeacherSignUpView(CreateView):
 		login(self.request, user)		
 		return result
 	
+@method_decorator(login_required, name='dispatch')
+class UserUpdateView(UpdateView):
+	model = User
+	fields = ('first_name', 'last_name', 'email', )
+	template_name = 'registration/my_account.html'
+	success_url = reverse_lazy('my_account')
+
+	#update hay dung get_object???
+	#con list thi dung get_queryset???
+	def get_object(self):
+		return self.request.user
