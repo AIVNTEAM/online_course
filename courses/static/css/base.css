@@ -257,3 +257,47 @@ ul#course-modules li:hover {
     color:#ccc;
     padding-left:20px;
 }
+.bg-den{
+    background: #000;
+    /*position: fixed;*/
+    width: 100%;
+}
+.bg-fixed{
+    position: fixed;
+}
+.logo{
+    height: 50px;
+}
+.menutrai li a{
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+.menutrai li ul li{
+    width: 200px;
+    padding: 10px;
+}
+.menutrai li ul li a{
+    color: #000;
+}
+.height200{
+    height: 75px;
+}
+#footer{
+    clear: both;
+}
+#footer .container ul{
+    flex-direction: row;
+    display: inline;
+}
+#footer .container ul li {
+    display: inline;
+    line-height: 88px;
+    border-left: white 1px solid;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#footer .container ul li a {
+    text-decoration: none;
+    color: white;
+}

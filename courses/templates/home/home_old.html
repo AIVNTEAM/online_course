@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="container trangchu">
+  <div class="row">
+    <div class="col-md-7">
+      <h2>Chào mừng đến với Website học trực tuyến! <span class="icon-emo-happy"></span></h2>
+      <p class="lead">
+        Nếu bạn đã có tài khoản: <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Đăng nhập</a>. 
+      </p>
+      <p class="lead"> 
+        Nếu bạn là người mới: <br>
+        <a href="{% url 'student_signup' %}" class="btn btn-success btn-lg">Đăng ký Học viên</a> hoặc <a href="{% url 'teacher_signup' %}" class="btn btn-success btn-lg">Đăng ký là Giáo viên</a>.
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="{% static 'img/image01.jpg' %}" width="100%" alt="">
+    </div>
+  </div>
+  
+  <div class="row">
+    <h3>Danh sách khóa học:</h3>
+    <div class="col-md-4">
+      
+    </div>
+    <h4><a href="{% url 'course_list' %}">Xem danh sach' khóa học đầy đủ</a></h4>
+  </div>
+</div>
+{% endblock %}

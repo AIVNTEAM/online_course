@@ -1,26 +1,25 @@
 {% extends "base.html" %}
 {% block title %}My courses{% endblock %}
 {% block content %}
-<h1>My courses</h1>
+<h1>Danh sách các khóa học</h1>
 <div class="module">
 {% for course in object_list %}
 <div class="course-info">
 <h3>{{ course.title }}</h3>
 <p>
-<a href="{% url 'course_edit' course.id %}">Edit</a>
-<a href="{% url 'course_delete' course.id %}">Delete</a>
-<a href="{% url 'course_module_update' course.id %}">Edit modules</a>
+<a href="{% url 'course_edit' course.id %}">Chỉnh sửa</a>
+<a href="{% url 'course_delete' course.id %}">Xóa</a>
+<a href="{% url 'course_module_update' course.id %}">Chỉnh sửa các chương (module)</a>
 {% if course.modules.count > 0 %}
-	<a href="{% url 'module_content_list' course.modules.first.id %}">Manage contents</a>
+	<a href="{% url 'module_content_list' course.modules.first.id %}">Quản lý nội dung</a>
 {% endif %}
 </p>
 </div>
 {% empty %}
-<p>You haven't created any courses yet.</p>
+<p>Bạn chưa tạo khóa học.</p>
 {% endfor %}
 <p>
-<a href="{% url 'course_create' %}" class="button">Create new
-course</a>
+<a href="{% url 'course_create' %}" class="button">Tạo khóa học mới</a>
 </p>
 </div>
 {% endblock %}

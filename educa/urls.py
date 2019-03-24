@@ -63,6 +63,7 @@ urlpatterns = [
         name='password_change'),
     url(r'^settings/password/done/$', auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'),
         name='password_change_done'),
+    url(r'^api/', include('courses.api.urls', namespace='api')),
 ]
 urlpatterns += static(settings.MEDIA_URL,
                         document_root=settings.MEDIA_ROOT)

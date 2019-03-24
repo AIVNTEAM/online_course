@@ -137,11 +137,20 @@ class Booking(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 
-class QuestionAnswer(models.Model):
-	content = models.TextField()
+class Question(models.Model):
+	question = models.TextField()
 	lesson = models.ForeignKey(Module, related_name='questions')
 	student = models.ForeignKey(Student, related_name='questions_asked', null=True, default='-1')
-	teacher = models.ForeignKey(Teacher, related_name='questions_answerd', null=True, default='-1')
+	# 
+	# answer_content = models.TextField()
+	status = models.BooleanField(default=0)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+
+class Answer(models.Model):
+	answer = models.TextField()
+	question = models.ForeignKey(Question, related_name='anwers')
+	teacher = models.ForeignKey(Teacher, related_name='answers')
 	status = models.BooleanField(default=0)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)

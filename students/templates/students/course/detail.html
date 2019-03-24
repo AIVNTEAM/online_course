@@ -30,6 +30,24 @@
 				<h2>{{ item.title }}</h2>
 				{{ item.render }}
 			{% endwith %}
+				
+		{% endfor %}
+	</div>
+	<br>
+	<div class="module">
+		<p>Ban co thac mac moi dat cau hoi duoi day cho {{ module.title }}:</p>
+		
+		<form action="" method="post">
+			
+			{% csrf_token %}		
+			{{ form.as_table }}
+			<p><input type="submit" value="Goi cau hoi"></p>
+		</form>
+	</div>
+	<div class="cauhoi">
+		<h1>Thao luan: </h1>
+		{% for question in module.questions.all %}
+			{{ question.question }} <br>
 		{% endfor %}
 	</div>
 {% endblock %}

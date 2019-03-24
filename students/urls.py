@@ -20,4 +20,8 @@ urlpatterns = [
 	url(r'^course/(?P<pk>\d+)/(?P<module_id>\d+)/$',
 		views.StudentCourseDetailView.as_view(),
 		name='student_course_detail_module'),
+
+	# url(r'^course/(?P<pk>\d+)/(?P<module_id>\d+)/addques/$',
+	#  	views.StudentQuestion.as_view(),
+	#  	name='addques'),
 ]
